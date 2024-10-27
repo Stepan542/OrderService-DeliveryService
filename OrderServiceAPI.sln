@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderServiceAppAPI", "OrderServiceAppAPI\OrderServiceAppAPI.csproj", "{2F3CC59A-10F9-4D46-A05C-713C6FD09977}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{B2936342-C172-4915-AC1D-D4729A5143A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F3CC59A-10F9-4D46-A05C-713C6FD09977}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F3CC59A-10F9-4D46-A05C-713C6FD09977}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F3CC59A-10F9-4D46-A05C-713C6FD09977}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F3CC59A-10F9-4D46-A05C-713C6FD09977}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2936342-C172-4915-AC1D-D4729A5143A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2936342-C172-4915-AC1D-D4729A5143A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2936342-C172-4915-AC1D-D4729A5143A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2936342-C172-4915-AC1D-D4729A5143A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0CB5298-E5A6-434B-ADFF-27348D573F1F}
+	EndGlobalSection
+EndGlobal
