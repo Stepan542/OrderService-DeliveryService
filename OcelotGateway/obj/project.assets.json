@@ -5876,11 +5876,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\makar\\Desktop\\OrderServiceAPI(main, Rabbit)\\OrderServiceAPI-mainApiProject\\OrderServiceAPI\\OcelotGateway\\OcelotGateway.csproj",
+      "projectUniqueName": "C:\\Users\\makar\\Desktop\\.net_Order_Service_Advanced-main\\OcelotGateway\\OcelotGateway.csproj",
       "projectName": "OcelotGateway",
-      "projectPath": "C:\\Users\\makar\\Desktop\\OrderServiceAPI(main, Rabbit)\\OrderServiceAPI-mainApiProject\\OrderServiceAPI\\OcelotGateway\\OcelotGateway.csproj",
+      "projectPath": "C:\\Users\\makar\\Desktop\\.net_Order_Service_Advanced-main\\OcelotGateway\\OcelotGateway.csproj",
       "packagesPath": "C:\\Users\\makar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\makar\\Desktop\\OrderServiceAPI(main, Rabbit)\\OrderServiceAPI-mainApiProject\\OrderServiceAPI\\OcelotGateway\\obj\\",
+      "outputPath": "C:\\Users\\makar\\Desktop\\.net_Order_Service_Advanced-main\\OcelotGateway\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\makar\\AppData\\Roaming\\NuGet\\NuGet.Config",

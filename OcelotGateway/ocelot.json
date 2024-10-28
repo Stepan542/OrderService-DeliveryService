@@ -12,6 +12,20 @@
             "UpstreamPathTemplate": "/order/{id}",
             "UpstreamHttpMethod": ["GET", "POST", "PUT", "DELETE"],
             "SwaggerKey": "OrderService"
+        },
+
+        {
+            "DownstreamPathTemplate": "/api/delivery/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts" : [
+                {
+                    "Host" : "localhost",
+                    "Port" : 5041
+                }
+            ],
+            "UpstreamPathTemplate": "/delivery/{id}",
+            "UpstreamHttpMethod": ["GET"],
+            "SwaggerKey": "DeliveryService"
         }
     ],
     "SwaggerEndPoints" : [
@@ -22,6 +36,17 @@
                     "Name": "Ocelot Gateway for OrderService",
                     "Version": "v1",
                     "Url": "http://localhost:5265/swagger/v1/swagger.json"
+                }
+            ]
+        },
+
+        {
+            "Key" : "DeliveryService",
+            "Config": [
+                {
+                    "Name" : "Delivery Gateway for DeliveryService",
+                    "Version" : "v1",
+                    "Url": "http://localhost:5041/swagger/v1/swagger.json"
                 }
             ]
         }

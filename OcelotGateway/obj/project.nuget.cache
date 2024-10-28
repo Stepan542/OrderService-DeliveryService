@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RPNyzGxpcn8=",
+  "dgSpecHash": "8UtClniPA8o=",
   "success": true,
-  "projectFilePath": "C:\\Users\\makar\\Desktop\\OrderServiceAPI(main, Rabbit)\\OrderServiceAPI-mainApiProject\\OrderServiceAPI\\OcelotGateway\\OcelotGateway.csproj",
+  "projectFilePath": "C:\\Users\\makar\\Desktop\\.net_Order_Service_Advanced-main\\OcelotGateway\\OcelotGateway.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\makar\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\makar\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

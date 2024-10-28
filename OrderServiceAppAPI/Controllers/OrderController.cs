@@ -17,12 +17,15 @@ namespace OrderServiceAppAPI.Controllers
         private readonly IOrderService _orderService;
         private readonly IMapper _mapper;
         private readonly IPublishEndpoint _publishEndpoint;
+        private readonly ILogger<OrderController> _logger;
 
-        public OrderController(IOrderService orderService, IMapper mapper, IPublishEndpoint publishEndpoint)
+        public OrderController(IOrderService orderService, IMapper mapper, IPublishEndpoint publishEndpoint, 
+            ILogger<OrderController> logger)
         {
             _orderService = orderService;
             _mapper = mapper;
             _publishEndpoint = publishEndpoint;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -56,8 +59,14 @@ namespace OrderServiceAppAPI.Controllers
             //     OrderId = createdOrder.Id,
             //     CreatedAt = DateTime.UtcNow
             // });
+            try {
+                await _publishEndpoint.Publish<IOrderForDelivery>(createdOrder);
+            }
 
-            await _publishEndpoint.Publish<IOrderForDelivery>(createdOrder);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "an error occured while sending the event.");
+            }
 
             return CreatedAtAction(nameof(GetOrder), new { id = createdOrder.Id }, createdOrder);
         }

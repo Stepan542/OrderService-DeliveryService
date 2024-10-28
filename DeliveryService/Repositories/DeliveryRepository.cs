@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DeliveryService.Data;
 using DeliveryService.Interfaces;
 using Shared.Models;
@@ -21,6 +17,11 @@ namespace DeliveryService.Repositories
         {
             await _dbContext.OrderDeliveries.AddAsync(order);
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<Order?> GetByIdAsync(int id)
+        {
+            return await _dbContext.OrderDeliveries.FindAsync(id);
         }
     }
 }

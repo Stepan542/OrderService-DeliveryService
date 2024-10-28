@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DeliveryService.Interfaces;
 using MassTransit;
 using Shared.Interfaces;
@@ -12,10 +8,12 @@ namespace DeliveryService.Consumers
     public class OrderForDeliveryConsumer : IConsumer<IOrderForDelivery>
     {
         private readonly IDeliveryService _deliveryService;
+        private readonly ILogger<OrderForDeliveryConsumer> _logger;
 
-        public OrderForDeliveryConsumer(IDeliveryService deliveryService)
+        public OrderForDeliveryConsumer(IDeliveryService deliveryService, ILogger<OrderForDeliveryConsumer> logger)
         {
             _deliveryService = deliveryService;
+            _logger = logger;
         }
 
         public async Task Consume(ConsumeContext<IOrderForDelivery> context)
@@ -29,7 +27,16 @@ namespace DeliveryService.Consumers
                 OrderDate = context.Message.OrderDate
             };
 
-            await _deliveryService.CreateDeliveryAsync(deliveryOrder);
+            try {
+                await _deliveryService.CreateDeliveryAsync(deliveryOrder);
+                _logger.LogInformation("the event was successfully processed.");
+            }
+
+            catch(Exception ex) {
+                _logger.LogError(ex, "an error occured while POST request");
+                throw;
+            }
+            
         }
     }
 }
