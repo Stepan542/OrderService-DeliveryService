@@ -9,29 +9,28 @@ namespace DeliveryService.Controllers
     public class DeliveryController : ControllerBase
     {
         private readonly IDeliveryService _deliveryService;
+        private readonly ILogger<DeliveryController> _logger;
 
-        public DeliveryController(IDeliveryService deliveryService)
+        public DeliveryController(IDeliveryService deliveryService, ILogger<DeliveryController> logger)
         {
             _deliveryService = deliveryService;
+            _logger = logger;
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateDelivery([FromBody]Order order)
+        public async Task<IActionResult> CreateAsync([FromBody]Order order)
         {
-            await _deliveryService.CreateDeliveryAsync(order);
+            await _deliveryService.CreateAsync(order);
             return Ok();
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetDeliveryById(int id)
+        public async Task<IActionResult> GetByIdAsync(int id)
         {
-            Console.WriteLine($"got id {id}");
-            var delivery = await _deliveryService.GetDeliveryByIdAsync(id);
+            _logger.LogInformation($"got id {id}");
+            var delivery = await _deliveryService.GetByIdAsync(id);
 
-            if (delivery == null)
-            {
-                return NotFound();
-            }
+            if (delivery == null) return NotFound();
 
             return Ok(delivery);
         }

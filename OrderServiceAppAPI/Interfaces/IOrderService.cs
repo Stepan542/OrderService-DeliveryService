@@ -8,10 +8,10 @@ namespace OrderServiceAppAPI.Services
 {
     public interface IOrderService
     {
-        Task<IEnumerable<Order>> GetAllOrdersAsync();
-        Task<Order?> GetOrderByIdAsync(int id);
-        Task<Order> CreateOrderAsync(Order order);
-        Task UpdateOrderAsync(Order order);
-        Task DeleteOrderAsync(int id);
+        Task<IEnumerable<Order>> GetAllAsync();
+        Task<Order?> GetByIdAsync(int id);
+        Task<Order> CreateAsync(Order order);
+        Task UpdateAsync(Order order);
+        Task DeleteAsync(int id);
     }
 }

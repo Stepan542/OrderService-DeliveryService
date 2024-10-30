@@ -4,7 +4,7 @@ namespace DeliveryService.Interfaces
 {
     public interface IDeliveryService
     {
-        Task CreateDeliveryAsync(Order order);
-        Task<Order?> GetDeliveryByIdAsync(int id);
+        Task CreateAsync(Order order);
+        Task<Order?> GetByIdAsync(int id);
     }
 }

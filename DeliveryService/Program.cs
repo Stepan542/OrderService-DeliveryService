@@ -5,6 +5,10 @@ using DeliveryService.Services;
 using Microsoft.EntityFrameworkCore;
 using MassTransit;
 using DeliveryService.Consumers;
+using DeliveryService.Mappers;
+using DeliveryService.Configurations;
+using MassTransit.Configuration;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,8 @@ builder.Services.AddDbContext<DeliveryDbContext>(options =>
 
 builder.Services.AddScoped<IDeliveryRepository, DeliveryRepository>();
 builder.Services.AddScoped<IDeliveryService, DeliveryServiceOrder>();
+
+builder.Services.Configure<RabbitMqOptions>(builder.Configuration.GetSection("RabbitMQ"));
 
 builder.Services.AddMassTransit(x =>
 {
@@ -25,13 +31,24 @@ builder.Services.AddMassTransit(x =>
         });
     });
 
-    x.UsingRabbitMq((context, cfg) =>
+    x.UsingRabbitMq((context, cfg) => // вытаскивать из appsettings (Options)
     {
-        cfg.Host("localhost", 5672, "/", h =>
+        var options = context.GetRequiredService<IOptions<RabbitMqOptions>>().Value;
+        
+        // не работает
+        // cfg.Host(options.Host, options.Port, h =>
+        // {
+        //     h.Username(options.Username);
+        //     h.Password(options.Password);
+        // }); 
+
+        // Не могу добавить port
+        cfg.Host(options.Host, h =>
         {
-            h.Username("guest");
-            h.Password("guest");
+            h.Username(options.Username);
+            h.Password(options.Password);
         });
+
 
         cfg.ReceiveEndpoint("order-delivery-last-try", e =>
         {
@@ -46,6 +63,7 @@ builder.Services.AddMassTransit(x =>
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(DeliveryMappingProfile));
 
 var app = builder.Build();
 app.MapControllers();

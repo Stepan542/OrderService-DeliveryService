@@ -12,12 +12,12 @@ namespace DeliveryService.Services
             _deliveryRepository = deliveryRepository;
         }
 
-        public async Task CreateDeliveryAsync(Order order)
+        public async Task CreateAsync(Order order)
         {
             await _deliveryRepository.CreateAsync(order);
         }
 
-        public async Task<Order?> GetDeliveryByIdAsync(int id)
+        public async Task<Order?> GetByIdAsync(int id)
         {
             return await _deliveryRepository.GetByIdAsync(id);
         }

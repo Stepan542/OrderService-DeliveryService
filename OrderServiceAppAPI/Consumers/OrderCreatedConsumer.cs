@@ -5,11 +5,17 @@ namespace OrderServiceAppAPI.Consumers
 {
     public class OrderCreatedConsumer : IConsumer<IOrderCreated>
     {
-        // просто ставит в очередь, передавая пустой интерфейс который не наследует модели
+        // Rabbit котоырый просто создаёт очередь, но ничего не делает.
+        private readonly ILogger<OrderCreatedConsumer> _logger;
+
+        public OrderCreatedConsumer(ILogger<OrderCreatedConsumer> logger)
+        {
+            _logger = logger;
+        }
         public async Task Consume(ConsumeContext<IOrderCreated> context)
         {
             var message = context.Message;
-            Console.WriteLine($"Order Created: {message.Id} at {message.OrderDate}");
+            _logger.LogInformation($"Order Created: {message.Id} at {message.OrderDate}");
 
             await Task.CompletedTask;
         }
